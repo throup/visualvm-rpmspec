@@ -10,6 +10,8 @@ License:          GPL-2.0-only WITH Classpath-exception-2.0
 URL:              https://visualvm.github.io/
 Source0:          https://github.com/oracle/%{shortname}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:    ant
+BuildRequires:    appstream
+BuildRequires:    desktop-file-utils
 BuildRequires:    java-1.8.0-devel
 BuildRequires:    java-1.8.0-headless
 BuildRequires:    libicns-utils

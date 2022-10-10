@@ -4,7 +4,7 @@
 
 Name:             VisualVM
 Version:          2.1.4
-Release:          1%{?dist}
+Release:          2%{?dist}
 Summary:          VisualVM is a visual tool integrating commandline JDK tools and lightweight profiling capabilities
 License:          GPL-2.0-only WITH Classpath-exception-2.0
 URL:              https://visualvm.github.io/
@@ -112,7 +112,6 @@ ln -s ../../../../%{shortname}/etc/visualvm_32x32x32.png   %{buildroot}%{_datadi
 ln -s ../../../../%{shortname}/etc/visualvm_128x128x32.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/%{shortname}.png
 ln -s ../../../../%{shortname}/etc/visualvm_256x256x32.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{shortname}.png
 ln -s ../../../../%{shortname}/etc/visualvm_512x512x32.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{shortname}.png
-#ln -s ../../../../%{shortname}/bin/idea.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{shortname}.svg
 
 install -p -m0755 %{shortname}.sh \
                   %{buildroot}%{_bindir}/%{shortname}
@@ -167,3 +166,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{uniquename}.desktop
 %{_datadir}/%{shortname}
 %license %{_datadir}/%{shortname}/LICENSE.txt
 %license %{_datadir}/%{shortname}/THIRDPARTYLICENSE
+
+
+%changelog
+* Thu Oct 6 2022 Chris Throup <chris@throup.eu>
+- Initial RPM release

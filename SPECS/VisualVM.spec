@@ -4,11 +4,13 @@
 
 Name:             VisualVM
 Version:          2.1.4
-Release:          3%{?dist}
+Release:          4%{?dist}
 Summary:          VisualVM is a visual tool integrating commandline JDK tools and lightweight profiling capabilities
 License:          GPL-2.0-only WITH Classpath-exception-2.0
 URL:              https://visualvm.github.io/
 Source0:          https://github.com/oracle/%{shortname}/archive/refs/tags/%{version}.tar.gz
+Recommends:       java
+Recommends:       java-devel
 BuildRequires:    ant
 BuildRequires:    appstream
 BuildRequires:    desktop-file-utils

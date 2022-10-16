@@ -18,6 +18,9 @@ Recommends:       java-devel
 BuildRequires:    ant
 BuildRequires:    appstream
 BuildRequires:    desktop-file-utils
+# Very smelly, requiring git to build.
+# This is due to the way netbeans is handled in the build script.
+BuildRequires:    git
 BuildRequires:    java-1.8.0-devel
 BuildRequires:    java-1.8.0-headless
 BuildRequires:    libicns-utils

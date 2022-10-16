@@ -1,14 +1,18 @@
 %define shortname  visualvm
 %define uniquename io.github.visualvm
 %global debug_package %{nil}
+%global snapshot 20221016
+%global short d05535f
+%global commit d05535fd13e281fe13ee10582678a4c043acddce
 
 Name:             VisualVM
-Version:          2.1.4
-Release:          4%{?dist}
+Version:          2.1.5~git%{snapshot}.%{short}
+Release:          1%{?dist}
 Summary:          VisualVM is a visual tool integrating commandline JDK tools and lightweight profiling capabilities
 License:          GPL-2.0-only WITH Classpath-exception-2.0
 URL:              https://visualvm.github.io/
-Source0:          https://github.com/oracle/%{shortname}/archive/refs/tags/%{version}.tar.gz
+#Source0:          https://github.com/oracle/%{shortname}/archive/refs/tags/%{version}.tar.gz
+Source0:          https://github.com/oracle/%{shortname}/archive/%{short}.tar.gz
 Recommends:       java
 Recommends:       java-devel
 BuildRequires:    ant
@@ -28,10 +32,13 @@ system, and view the data later or share the data with others.
 
 
 %prep
-%setup -qn "%{shortname}-%{version}"
+#%setup -qn "%{shortname}-%{version}"
+%setup -qn "%{shortname}-%{commit}"
 # TODO: netbeans could be packaged separately
-unzip visualvm/nb124_platform_09022022.zip
-mv netbeans visualvm/
+cd visualvm
+./build-nb.sh
+mv build/nb/nb140_platform_.zip ./
+unzip nb140_platform_.zip
 
 
 %build
@@ -136,6 +143,7 @@ cp %{uniquename}.metainfo.xml %{buildroot}%{_datadir}/metainfo/
 
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/bin/visualvm.exe
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/platform/modules/lib/aarch64*
+rm -Rf %{buildroot}%{_datadir}/%{shortname}/platform/modules/lib/riscv64*
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/visualvm/lib/deployed/jdk15/mac*
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/visualvm/lib/deployed/jdk15/solaris*
 rm -Rf %{buildroot}%{_datadir}/%{shortname}/visualvm/lib/deployed/jdk15/windows*

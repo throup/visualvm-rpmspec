@@ -37,7 +37,9 @@ system, and view the data later or share the data with others.
 %prep
 #%setup -qn "%{shortname}-%{version}"
 %setup -qn "%{shortname}-%{commit}"
+
 # TODO: netbeans could be packaged separately
+export JAVA_HOME=$(realpath $(rpm -ql $(rpm -q --whatprovides java-1.8.0-headless) | grep "jre" | head -n1)/..)
 cd visualvm
 ./build-nb.sh
 mv build/nb/nb140_platform_.zip ./
